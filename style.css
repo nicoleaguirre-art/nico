@@ -29,7 +29,7 @@ header p {
 
 /* BODY */
 body {
-  font-family: Times New Roman, serif;
+  font-family: FreeMono, monospace;
   line-height: 1.5;
   color: #1A1A1A;
   background: #8DF688;
