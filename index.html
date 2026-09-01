@@ -1,3 +1,243 @@
+can you possibly make this image an actual coded image like revolving 
+
+Definitely. Since your portfolio is photography + mixed media + video, I’d make it feel more like an interactive art portfolio instead of a basic list of projects. You don't need to completely change your vision.
+
+Here are some things that would work really well with your current yellow/black style:
+
+1. Make your name HUGE
+
+Instead of:
+
+Nicole Aguirre
+
+Make the header feel like an opening screen:
+
+header h1 {
+  font-size: 7rem;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+}
+
+Then:
+
+header p {
+  font-size: 0.8rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+}
+
+It would make Nicole Aguirre the first thing people see.
+
+2. Make the images react to your mouse
+
+This is probably the biggest improvement.
+
+For example, your images could start normal:
+
+Los Caminos De La Vida
+
+and when you hover:
+
+image slightly enlarges
+image rotates a little
+title moves
+caption appears
+surrounding page becomes darker
+
+You can add this to your CSS:
+
+.project figure {
+  overflow: hidden;
+}
+
+.project img {
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.project:hover img {
+  transform: scale(1.04) rotate(1deg);
+}
+
+That alone will make the site feel much less static.
+
+3. Add a little movement to your project titles
+.project h2 {
+  transition: transform 0.4s ease;
+}
+
+.project:hover h2 {
+  transform: translateX(15px);
+}
+
+So when someone hovers over Hardworking Woman, the title moves slightly.
+
+4. Make your project numbers
+
+This could look really cool with your work.
+
+<h2>
+  <span class="number">01</span>
+  Los Caminos De La Vida
+</h2>
+
+Then CSS:
+
+.number {
+  font-size: 0.7rem;
+  vertical-align: top;
+  margin-right: 10px;
+  opacity: 0.5;
+}
+
+Then:
+
+01  Los Caminos De La Vida
+
+02  Hardworking Woman
+
+03  Hot Fun
+
+04  My Palace of Peace
+
+It makes the portfolio feel intentionally designed.
+
+5. Add a moving line between projects
+.project {
+  padding-bottom: 4rem;
+  border-bottom: 1px solid #1A1A1A;
+  margin-bottom: 4rem;
+}
+
+You could even make the line animate:
+
+.project {
+  position: relative;
+}
+
+.project::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #1A1A1A;
+  transition: width 0.5s ease;
+}
+
+.project:hover::after {
+  width: 100%;
+}
+6. Make your background slightly more alive
+
+Since you liked the neon/yellow direction before, you could have a subtle gradient instead of one flat yellow:
+
+body {
+  background: linear-gradient(
+    135deg,
+    #FFF224,
+    #DFFF00,
+    #FFF224
+  );
+}
+
+Or make the gradient move:
+
+body {
+  background: linear-gradient(
+    120deg,
+    #FFF224,
+    #DFFF00,
+    #FFF224,
+    #EFFF00
+  );
+
+  background-size: 400% 400%;
+  animation: backgroundMove 12s ease infinite;
+}
+
+@keyframes backgroundMove {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+That would give the whole website a subtle living quality without becoming distracting.
+
+7. Give the videos more personality
+
+Instead of just:
+
+<video controls muted loop>
+
+you could make the video enlarge when hovered:
+
+.project video {
+  transition: transform 0.6s ease;
+}
+
+.project:hover video {
+  transform: scale(1.03);
+}
+My favorite direction for YOUR site
+
+I'd combine 4 things:
+
+BIG NAME
+
+↓
+
+Student — Artist
+
+↓
+
+Animated yellow background
+
+↓
+
+Projects with interactive images
+
+↓
+
+01 — Los Caminos De La Vida
+
+↓
+
+02 — Hardworking Woman
+
+↓
+
+03 — Hot Fun
+
+↓
+
+etc.
+
+And I'd make Los Caminos De La Vida the "hero" project, where the individual photos respond to your mouse. That would make the site feel much more like your artwork is controlling the website, rather than the website just displaying your artwork.
+
+give it to me in full html 
+
+Absolutely. Here's a full HTML version using your existing portfolio, but making it more interesting with:
+
+Huge Nicole Aguirre header
+Yellow/black visual identity
+Animated background
+Project numbers
+Hover effects on images
+Images slightly zoom/rotate when hovered
+Titles slide when hovered
+Animated divider lines
+Your videos still work normally
+Your original project text is kept
+
+You can replace your current index.html with this:
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -783,6 +1023,580 @@
         src="Aguirre_Glimpse_01.mp4"
         controls
         muted
+        loop>
+      </video>
+
+      <figcaption>
+        A glimpse, if you will.
+      </figcaption>
+
+    </figure>
+
+    <p>
+      This video is an edited collection of iMovie clips featuring people I
+      love, including those I have not seen in years but still carry
+      affection for. I arranged these fragments of memory over a section of
+      Theorem by Ear, a song that evokes a sense of nostalgia and reflection
+      on people and time.
+
+      The piece became especially significant to me following a recent
+      life-threatening experience that profoundly altered the way I
+      understood memory and mortality. In the aftermath, I found myself
+      reflecting on the people and moments that have shaped my life, both
+      those that remain close and those that exist only in memory.
+    </p>
+
+  </section>
+
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+
+<footer>
+
+  <p>
+    Nicole Aguirre ~ nicoleaguirre@ucsb.edu ~ 2026
+  </p>
+
+</footer>
+
+
+</body>
+</html>
+
+One important thing: this version puts the extra CSS directly inside your HTML, so you don't have to change style.css yet. Your style.css will still load, but the styles inside this HTML will take priority where they overlap.
+
+The biggest visual change will be the giant opening “Nicole Aguirre”, then the portfolio transitions into your work with the interactive hover effects.
+
+the headline is ridicolous put it back to normal and my footer, as well as make the videos unmuted 
+
+Yep — let's keep the original simple header and footer from your starter design. I'll also make both videos unmuted by removing muted.
+
+Here is the full corrected HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Nicole Aguirre ~ portfolio</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =========================================
+       SUBTLE INTERACTIVE EFFECTS
+       ========================================= */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Images slightly move when hovered */
+
+    figure {
+      overflow: hidden;
+    }
+
+    figure img {
+      transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+    }
+
+    .project:hover figure img {
+      transform: scale(1.04) rotate(0.5deg);
+      filter: contrast(1.05);
+    }
+
+
+    /* Videos slightly move when hovered */
+
+    figure video {
+      width: 100%;
+      display: block;
+
+      transition:
+        transform 0.6s ease;
+    }
+
+    .project:hover figure video {
+      transform: scale(1.03);
+    }
+
+
+    /* Project titles move slightly */
+
+    .project h2 {
+      transition:
+        transform 0.4s ease,
+        letter-spacing 0.4s ease;
+    }
+
+    .project:hover h2 {
+      transform: translateX(10px);
+    }
+
+
+    /* Captions move slightly */
+
+    figcaption {
+      transition: transform 0.4s ease;
+    }
+
+    .project:hover figcaption {
+      transform: translateX(8px);
+    }
+
+
+    /* Animated line under each project */
+
+    .project {
+      position: relative;
+    }
+
+    .project::after {
+      content: "";
+      display: block;
+
+      width: 0;
+      height: 2px;
+
+      background: #1A1A1A;
+
+      transition: width 0.5s ease;
+    }
+
+    .project:hover::after {
+      width: 100%;
+    }
+
+
+    /* =========================================
+       PROJECT NUMBERS
+       ========================================= */
+
+    .number {
+      font-size: 0.7rem;
+      vertical-align: top;
+      margin-right: 8px;
+      opacity: 0.5;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+<header>
+
+  <h1>Nicole Aguirre</h1>
+
+  <p>
+    Artist and Student ~ Los Angeles and Santa Barbara
+  </p>
+
+</header>
+
+
+<main>
+
+
+  <!-- ============================================================
+       01 — LOS CAMINOS DE LA VIDA
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">01</span>
+      Los Caminos De La Vida
+    </h2>
+
+    <p class="meta">
+      Photography | 2025 | Independent | Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <img
+        src="Aguirre_Different_01.png"
+        alt="Photographic collage of people from El Salvador"
+      >
+
+      <figcaption>
+        Photos of the people of El Salvador, superimposed onto each other.
+      </figcaption>
+
+    </figure>
+
+    <p>
+      This project documents the lives and landscapes of El Salvador during
+      my visit last summer. I photographed the places I encountered and
+      layered the images according to their visual and personal connections,
+      creating compositions that reflect the overlapping experiences of place
+      and identity.
+
+      I created this work with my cousin in mind, an immigrant now living in
+      Los Angeles who had been away from El Salvador for four years. I wanted
+      to offer him a glimpse of a country that had continued to change in his
+      absence, particularly amid the political and social shifts of the new
+      presidency.
+    </p>
+
+  </section>
+
+
+
+  <!-- ============================================================
+       02 — HARDWORKING WOMAN
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">02</span>
+      Hardworking Woman
+    </h2>
+
+    <p class="meta">
+      Mixed media | 2024 | Independent | Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <img
+        src="Aguirre_Work_01.jpg"
+        alt="Collage about motherhood and labor"
+      >
+
+      <figcaption>
+        My mother and the forces against her.
+      </figcaption>
+
+    </figure>
+
+    <p>
+      This work is a collage at its core, combining imagery and text to
+      reflect on a lived experience. I assembled the photographs through an
+      external digital platform, selecting and layering images in response
+      to the words that accompany them.
+
+      The text reads: “I have been good at my job, but I have never been
+      loved.” I do not remember where I first encountered this sentence, but
+      it stayed with me. I began to recognize its sentiment in the
+      experiences of Latinas and women more broadly, particularly in the
+      ways labor and self-sufficiency can become deeply intertwined with
+      identity.
+    </p>
+
+  </section>
+
+
+
+  <!-- ============================================================
+       03 — HOT FUN
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">03</span>
+      Hot Fun
+    </h2>
+
+    <p class="meta">
+      Photography | 2025 | Independent | Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <img
+        src="Aguirre_skinny_01.jpg"
+        alt="Panoramic photograph of an electronic music performance"
+      >
+
+      <figcaption>
+        The hellp in all their essence.
+      </figcaption>
+
+    </figure>
+
+    <p>
+      This panoramic photograph captures the exhilarating experience of
+      electronic music moving through a crowd. Each frame was taken seconds
+      apart, allowing the images to overlap and create a sense of continuous
+      motion and collective energy.
+
+      The resulting panorama attempts to translate an experience that is
+      difficult to articulate through language. The intensity of sound,
+      movement, light, and shared excitement within a crowd.
+    </p>
+
+  </section>
+
+
+
+  <!-- ============================================================
+       04 — MY PALACE OF PEACE
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">04</span>
+      My Palace of Peace
+    </h2>
+
+    <p class="meta">
+      Video | 2026 | Independent | Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <video
+        src="Aguirre_hot_01.MP4"
+        controls
+        loop>
+      </video>
+
+      <figcaption>
+        Peace.
+      </figcaption>
+
+    </figure>
+
+    <p>
+      This slow-motion video captures the duo Frost Children performing for
+      UCSB students at the Hub. Drawing an intense and energetic response
+      from the crowd.
+
+      I chose to slow the footage down to emphasize the movement, emotion,
+      and visual intensity of the performance. The contrast between the
+      chaotic energy of the crowd and the classical composition Suite for
+      Violoncello in G major by Jan Vogler creates an unexpected tension,
+      making this performance seen through a different lens.
+    </p>
+
+  </section>
+
+
+
+  <!-- ============================================================
+       05 — GENUINELY
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">05</span>
+      Genuinely
+    </h2>
+
+    <p class="meta">
+      Mixed media | 2026 | Independent | Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <img
+        src="Aguirre_Soju_01.jpg"
+        alt="Photograph documenting excitement at a performance"
+      >
+
+      <figcaption>
+        Is this genuine?
+      </figcaption>
+
+    </figure>
+
+    <p>
+      In this piece, the expressions and body language reflect the excitement
+      of the space, while the surrounding lights intensify the atmosphere
+      and energy of the performance.
+
+      The blurred face on the left introduces a sense of anonymity, allowing
+      the image to feel less like a portrait of specific individuals and more
+      like a documentation of a shared experience. Along with the visible
+      expressions of excitement, it draws attention to the emotional
+      connection between the performers and the audience. It's genuine.
+    </p>
+
+  </section>
+
+
+
+  <!-- ============================================================
+       06 — I CAN SING, I CAN FLY
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">06</span>
+      I Can Sing, I Can Fly
+    </h2>
+
+    <p class="meta">
+      Sculpture | 2026 | MAT 10 | Shared |
+      Acucar Pinto and Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <img
+        src="Aguirre_Birdie_01.jpg"
+        alt="Bird sculpture with electronic components"
+      >
+
+      <figcaption>
+        What if we could do both.
+      </figcaption>
+
+    </figure>
+
+    <p>
+      This work is a hybrid of sculpture and sound, created by transforming
+      the internal mechanics of a vaporizer into a functional synthesizer.
+      Photo sensors embedded in the bird’s wings connect to the electronics
+      within, allowing movement and light to interact with the instrument.
+      A speaker, created by my co-creator Acucar Pinto, is incorporated into
+      the bird’s tail, completing its sound-producing system.
+
+      The mechanical components are enclosed within a terracotta clay
+      sculpture that I designed and constructed in the form of a bird. The
+      bird became an intentional symbol of voice and freedom, connecting
+      the physical act of producing sound with the idea of a spirit finding
+      expression.
+    </p>
+
+  </section>
+
+
+
+  <!-- ============================================================
+       07 — HAIR TAKES MILES
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">07</span>
+      Hair Takes Miles
+    </h2>
+
+    <p class="meta">
+      Mixed media | 2025 | Literary Arts Magazine | Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <img
+        src="Aguirre_People_01.jpg"
+        alt="Photographic collage focusing on people's hair"
+      >
+
+      <figcaption>
+        Hair for thought.
+      </figcaption>
+
+    </figure>
+
+    <p>
+      Hair Takes Miles is a photographic collage composed of images of my
+      friends and loved ones, focusing specifically on their hair. I
+      assembled the photographs through an external digital platform,
+      initially imagining the work as a visual framework for a poem or piece
+      of prose. Instead, the collage developed into something more personal
+      and cathartic.
+
+      Hair carries a particular significance in how we present ourselves to
+      the world. It can communicate identity and personality, and intention
+      before we ever speak. In many ways, hair speaks for us when we cannot;
+      it becomes a visual extension of how we want to be perceived and
+      remembered by others.
+    </p>
+
+  </section>
+
+
+
+  <!-- ============================================================
+       08 — SMILE, PLEASE
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">08</span>
+      Smile, Please
+    </h2>
+
+    <p class="meta">
+      Mixed media | 2025 | Literary Arts Magazine | Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <img
+        src="Aguirre_Gone_01.jpg"
+        alt="Family photograph used in a creative writing piece"
+      >
+
+      <figcaption>
+        Sob story.
+      </figcaption>
+
+    </figure>
+
+    <p>
+      This prose piece was created for an English creative writing course
+      and designed in Adobe InDesign. At its center is a photograph of my
+      family, with the blurred faces representing my brother and me. The
+      image serves as both a document of our shared childhood and a starting
+      point for examining how differently the same experience can be
+      remembered.
+
+      The piece is divided between my brother’s perspective on the left and
+      my own on the right, allowing two interpretations of the same
+      childhood to exist alongside one another. Although we experienced many
+      of the same moments, our memories and understandings of them are
+      distinctly our own.
+    </p>
+
+  </section>
+
+
+
+  <!-- ============================================================
+       09 — BEFORE I DIE
+       ============================================================ -->
+
+  <section class="project">
+
+    <h2>
+      <span class="number">09</span>
+      Before I Die
+    </h2>
+
+    <p class="meta">
+      Video | 2026 | Independent | Nicole Aguirre
+    </p>
+
+    <figure>
+
+      <video
+        src="Aguirre_Glimpse_01.mp4"
+        controls
         loop>
       </video>
 
