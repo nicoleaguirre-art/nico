@@ -21,9 +21,7 @@ header h1 {
   font-weight: normal;
 }
 
-header p {
-  color: #FFF224;
-  margin: 0.5rem 0 0;
+header p { color: #666; margin: 0.25rem 0 0; }
 }
 
 
